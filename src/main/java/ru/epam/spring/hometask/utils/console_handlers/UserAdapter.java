@@ -31,7 +31,7 @@ public class UserAdapter {
     }
 
     public String delUser(int id) {
-        return "удален пользователь " + userService.remove(id) ;
+        return "удален пользователь " + userService.remove(id);
     }
 
     public String getUserById(int id) {
@@ -57,10 +57,11 @@ public class UserAdapter {
     }
 
     public String authorization(String email){
-
+        User user = userService.getUserByEmail(email);
+        if(user == null){
+            return "пользователь не найден";
+        }else{
+            return "пользователь " + user.getFirstName() + " авторизирован";
+        }
     }
-
-
-//    isAuth
-//    isAdmin
 }

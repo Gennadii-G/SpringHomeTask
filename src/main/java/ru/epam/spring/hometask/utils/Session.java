@@ -6,6 +6,11 @@ public class Session {
 
     private User activeUser;
 
+    public Boolean isAuth() {
+        if (activeUser != null) return true;
+        return false;
+    }
+
     public void setActiveUser(User activeUser){
         if(activeUser != null){
             this.activeUser = activeUser;
