@@ -1,0 +1,47 @@
+// Spring Shell 1.1.0.RELEASE log opened at 2017-08-10 12:51:03
+// Spring Shell 1.1.0.RELEASE log opened at 2017-08-10 12:52:22
+// Spring Shell 1.1.0.RELEASE log opened at 2017-08-10 13:12:28
+help
+my-test
+// Spring Shell 1.1.0.RELEASE log opened at 2017-08-10 13:50:43
+my-test
+my-test
+my-test
+my-test
+my-test
+// Spring Shell 1.1.0.RELEASE log opened at 2017-08-11 11:45:35
+test
+// Spring Shell 1.1.0.RELEASE log opened at 2017-08-11 11:46:23
+test
+test
+test
+// Spring Shell 1.1.0.RELEASE log opened at 2017-08-11 11:46:56
+help
+version
+exit
+// Spring Shell 1.1.0.RELEASE log closed at 2017-08-11 11:47:42
+// Spring Shell 1.1.0.RELEASE log opened at 2017-08-11 13:15:33
+login --name gena
+// Spring Shell 1.1.0.RELEASE log opened at 2017-08-11 13:19:08
+// Spring Shell 1.1.0.RELEASE log opened at 2017-08-11 13:22:05
+// Spring Shell 1.1.0.RELEASE log opened at 2017-08-11 13:23:30
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-11 13:24:45
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-11 13:25:01
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-11 13:40:03
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-11 13:40:21
+test
+login --name intro
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-11 13:43:54
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-11 14:56:25
+help
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-11 14:59:38
+registration --firstName G --lastName B --birthDate 1991-01-08 --email aaa@bbb.com
+registration --firstName G --lastName B --birthDate '2000-01-01' --email aaa@bbb.com
+registration --firstName G --lastName B --birthDate 1991-10-10 --email aaa@bbb.com
+registration --firstName G --lastName B --birthDate "2000-01-02" --email aaa@bbb.com
+registration --firstName G --lastName B --birthDate 2000-12-12 --email aaa@bbb.com
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-11 15:04:08
+registration --firstName A --lastName B --birthDate 2000-12-12 --email a@b.ru
+registration --firstName A --lastName B --birthDate "2000-12-12" --email a@b.ru
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-11 15:07:15
+registration --firstName Gena --lastName Borodin --email a@b.ru
