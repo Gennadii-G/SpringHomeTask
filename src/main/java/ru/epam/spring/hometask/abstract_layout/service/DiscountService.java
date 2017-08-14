@@ -1,4 +1,4 @@
-package ru.epam.spring.hometask.service;
+package ru.epam.spring.hometask.abstract_layout.service;
 
 import ru.epam.spring.hometask.domain.Event;
 import ru.epam.spring.hometask.domain.User;

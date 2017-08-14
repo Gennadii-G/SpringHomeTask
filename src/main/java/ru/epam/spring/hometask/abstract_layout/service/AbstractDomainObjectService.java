@@ -1,7 +1,6 @@
-package ru.epam.spring.hometask.service;
+package ru.epam.spring.hometask.abstract_layout.service;
 
 import ru.epam.spring.hometask.domain.DomainObject;
-import ru.epam.spring.hometask.domain.User;
 
 import javax.annotation.Nonnull;
 import java.util.Collection;
@@ -31,7 +30,7 @@ public interface AbstractDomainObjectService<T extends DomainObject> {
      */
     public boolean remove(@Nonnull T object);
 
-    public User remove(@Nonnull int id);
+    public T remove(@Nonnull int id);
 
     /**
      * Getting object by id from storage

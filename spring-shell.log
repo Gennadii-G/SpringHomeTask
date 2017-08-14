@@ -45,3 +45,7 @@ registration --firstName A --lastName B --birthDate 2000-12-12 --email a@b.ru
 registration --firstName A --lastName B --birthDate "2000-12-12" --email a@b.ru
 // Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-11 15:07:15
 registration --firstName Gena --lastName Borodin --email a@b.ru
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-14 16:32:41
+help
+show-all-event
+test

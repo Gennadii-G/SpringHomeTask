@@ -3,8 +3,7 @@ package ru.epam.spring.hometask.database;
 import ru.epam.spring.hometask.domain.Event;
 import ru.epam.spring.hometask.domain.Ticket;
 import ru.epam.spring.hometask.domain.User;
-import ru.epam.spring.hometask.service.BookingService;
-import ru.epam.spring.hometask.service.DiscountService;
+import ru.epam.spring.hometask.abstract_layout.service.BookingService;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

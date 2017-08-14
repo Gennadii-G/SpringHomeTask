@@ -22,13 +22,29 @@
     </bean>
 
     <bean id="usersDAO" class="ru.epam.spring.hometask.database.UsersDAO"/>
+    <bean id="ticketsDAO" class="ru.epam.spring.hometask.database.TicketsDAO"/>
+    <bean id="eventsDAO" class="ru.epam.spring.hometask.database.EventsDAO"/>
+    <bean id="discountDAO" class="ru.epam.spring.hometask.database.DiscountDAO"/>
+    <bean id="auditoriumDAO" class="ru.epam.spring.hometask.database.AuditoriumDAO"/>
+    <bean id="session" class="ru.epam.spring.hometask.utils.Session"/>
 
-    <bean id="userAdapter" class="ru.epam.spring.hometask.utils.console_handlers.UserAdapter">
+    <bean id="userAdapter" class="ru.epam.spring.hometask.utils.adapter.UserConsoleAdapter">
         <constructor-arg ref="usersDAO"/>
+    </bean>
+    <bean id="bookingAdapter" class="ru.epam.spring.hometask.utils.adapter.BookingConsoleAdapter">
+        <constructor-arg ref="ticketsDAO"/>
+        <constructor-arg ref="eventsDAO"/>
+        <constructor-arg ref="usersDAO"/>
+    </bean>
+    <bean id="eventAdapter" class="ru.epam.spring.hometask.utils.adapter.EventConsoleAdapter">
+        <constructor-arg ref="eventsDAO"/>
+        <constructor-arg ref="auditoriumDAO"/>
+    </bean>
+    <bean id="auditoriumAdapter" class="ru.epam.spring.hometask.utils.adapter.AuditoriumConsoleAdapter">
+        <constructor-arg ref="auditoriumDAO"/>
     </bean>
 
     <!--<bean id="user" class="ru.epam.spring.hometask.domain.User" scope="prototype"/>-->
 
-    <bean id="UsersDAO" class="ru.epam.spring.hometask.database.UsersDAO"/>
 
 </beans>

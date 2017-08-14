@@ -1,7 +1,7 @@
 package ru.epam.spring.hometask.database;
 
 import ru.epam.spring.hometask.domain.Event;
-import ru.epam.spring.hometask.service.EventService;
+import ru.epam.spring.hometask.abstract_layout.service.EventService;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -31,9 +31,14 @@ public class EventsDAO implements EventService {
     }
 
     @Override
-    public Event getById(@Nonnull Long id) {
+    public Event remove(@Nonnull int id) {
+        return data.remove(id);
+    }
+
+    @Override
+    public Event getById(@Nonnull int id) {
         for(Event event : data){
-            if(event.getId().equals(id))
+            if(event.getId() == id)
                 return event;
         }
         return null;

@@ -1,16 +1,15 @@
-package ru.epam.spring.hometask.utils.console_handlers;
+package ru.epam.spring.hometask.utils.adapter;
 
 import ru.epam.spring.hometask.domain.User;
-import ru.epam.spring.hometask.service.UserService;
+import ru.epam.spring.hometask.abstract_layout.service.UserService;
 
-import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Map;
 
-public class UserAdapter {
+public class UserConsoleAdapter {
     private UserService userService;
 
-    public UserAdapter(UserService userService) {
+    public UserConsoleAdapter(UserService userService) {
         this.userService = userService;
     }
 

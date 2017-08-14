@@ -2,6 +2,7 @@ package ru.epam.spring.hometask.domain;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.NavigableMap;
 import java.util.NavigableSet;
 import java.util.Objects;
@@ -14,14 +15,11 @@ import java.util.TreeSet;
 public class Event extends DomainObject {
 
     private String name;
-
     private NavigableSet<LocalDateTime> airDates = new TreeSet<>();
-
     private double basePrice;
-
     private EventRating rating;
-
     private NavigableMap<LocalDateTime, Auditorium> auditoriums = new TreeMap<>();
+    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     /**
      * Checks if event is aired on particular <code>dateTime</code> and assigns
