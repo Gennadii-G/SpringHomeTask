@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="
+ 		http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+ 		http://www.springframework.org/schema/util
+ 		http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+    <bean id="admin" class="ru.epam.spring.hometask.domain.User">
+        <property name="id">
+            <value type="java.lang.Integer">1</value>
+        </property>
+        <property name="firstName">
+            <value type="java.lang.String">${0.user.firstName}</value>
+        </property>
+        <property name="lastName">
+            <value type="java.lang.String">${0.user.lastName}</value>
+        </property>
+        <!--<property name="birthDate">-->
+            <!--<value type="java.time.LocalDate">${0.user.birthDate}</value>-->
+        <!--</property>-->
+        <property name="email">
+            <value type="java.lang.String">${0.user.email}</value>
+        </property>
+        <property name="power">
+            <value type="java.lang.Boolean">${0.user.power}</value>
+        </property>
+    </bean>
+
+    <bean id="userI" class="ru.epam.spring.hometask.domain.User">
+        <property name="id">
+            <value type="java.lang.Integer">2</value>
+        </property>
+        <property name="firstName">
+            <value type="java.lang.String">${1.user.firstName}</value>
+        </property>
+        <property name="lastName">
+            <value type="java.lang.String">${1.user.lastName}</value>
+        </property>
+        <!--<property name="birthDate">-->
+        <!--<value type="java.time.LocalDate">${1.user.birthDate}</value>-->
+        <!--</property>-->
+        <property name="email">
+            <value type="java.lang.String">${1.user.email}</value>
+        </property>
+        <property name="power">
+            <value type="java.lang.Boolean">${1.user.power}</value>
+        </property>
+    </bean>
+
+    <bean id="userII" class="ru.epam.spring.hometask.domain.User">
+        <property name="id">
+            <value type="java.lang.Integer">3</value>
+        </property>
+        <property name="firstName">
+            <value type="java.lang.String">${2.user.firstName}</value>
+        </property>
+        <property name="lastName">
+            <value type="java.lang.String">${2.user.lastName}</value>
+        </property>
+        <!--<property name="birthDate">-->
+        <!--<value type="java.time.LocalDate">${2.user.birthDate}</value>-->
+        <!--</property>-->
+        <property name="email">
+            <value type="java.lang.String">${2.user.email}</value>
+        </property>
+        <property name="power">
+            <value type="java.lang.Boolean">${2.user.power}</value>
+        </property>
+    </bean>
+
+    <bean id="userIII" class="ru.epam.spring.hometask.domain.User">
+        <property name="id">
+            <value type="java.lang.Integer">4</value>
+        </property>
+        <property name="firstName">
+            <value type="java.lang.String">${3.user.firstName}</value>
+        </property>
+        <property name="lastName">
+            <value type="java.lang.String">${3.user.lastName}</value>
+        </property>
+        <!--<property name="birthDate">-->
+        <!--<value type="java.time.LocalDate">${3.user.birthDate}</value>-->
+        <!--</property>-->
+        <property name="email">
+            <value type="java.lang.String">${3.user.email}</value>
+        </property>
+        <property name="power">
+            <value type="java.lang.Boolean">${3.user.power}</value>
+        </property>
+    </bean>
+
+
+</beans>

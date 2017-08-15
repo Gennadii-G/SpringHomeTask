@@ -1,9 +1,6 @@
 package ru.epam.spring.hometask.domain;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.LongStream;
 
@@ -14,7 +11,7 @@ public class Auditorium {
 
     private String name;
 
-    private long numberOfSeats;
+    private Long numberOfSeats;
 
     private Set<Long> vipSeats = Collections.emptySet();
 
@@ -40,11 +37,11 @@ public class Auditorium {
         this.name = name;
     }
 
-    public long getNumberOfSeats() {
+    public Long getNumberOfSeats() {
         return numberOfSeats;
     }
 
-    public void setNumberOfSeats(long numberOfSeats) {
+    public void setNumberOfSeats(Long numberOfSeats) {
         this.numberOfSeats = numberOfSeats;
     }
     
@@ -56,8 +53,21 @@ public class Auditorium {
         return vipSeats;
     }
 
-    public void setVipSeats(Set<Long> vipSeats) {
-        this.vipSeats = vipSeats;
+    public void setVipSeats(String[] strSeats) {
+        Set<Long> set = new HashSet<>();
+        for (String str : strSeats){
+            set.add(Long.parseLong(str));
+        }
+        this.vipSeats = set;
+    }
+
+    @Override
+    public String toString() {
+        return "Auditorium{" +
+                "name='" + name + '\'' +
+                ", numberOfSeats=" + numberOfSeats +
+                ", vipSeats=" + vipSeats +
+                '}';
     }
 
     @Override

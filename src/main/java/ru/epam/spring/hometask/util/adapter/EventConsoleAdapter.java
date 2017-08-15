@@ -1,4 +1,4 @@
-package ru.epam.spring.hometask.utils.adapter;
+package ru.epam.spring.hometask.util.adapter;
 
 import ru.epam.spring.hometask.abstract_layout.service.AuditoriumService;
 import ru.epam.spring.hometask.abstract_layout.service.EventService;
@@ -7,7 +7,6 @@ import ru.epam.spring.hometask.domain.Event;
 import ru.epam.spring.hometask.domain.EventRating;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.NavigableMap;
 import java.util.TreeMap;

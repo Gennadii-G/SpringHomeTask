@@ -1,8 +1,9 @@
-package ru.epam.spring.hometask.utils.adapter;
+package ru.epam.spring.hometask.util.adapter;
 
 import ru.epam.spring.hometask.domain.User;
 import ru.epam.spring.hometask.abstract_layout.service.UserService;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Map;
 
@@ -18,7 +19,7 @@ public class UserConsoleAdapter {
         try {
             user.setFirstName(userInfo.get("firstName"));
             user.setLastName(userInfo.get("lastName"));
-//            user.setBirthDay(LocalDate.parse("birthDate"));
+            user.setBirthDay(LocalDate.parse("birthDate"));
             user.setEmail(userInfo.get("email"));
 
             userService.save(user);
@@ -44,7 +45,15 @@ public class UserConsoleAdapter {
 
     public String getUserByEmail(String email) {
         User user = userService.getUserByEmail(email);
-        return (user != null) ? user.toString() : "user not found";
+        if(user == null){
+            return "пользователь с таким ящиком не найден";
+        }else {
+            return user.toString();
+        }
+    }
+
+    public User loginByEmail(String email) {
+         return userService.getUserByEmail(email);
     }
 
     public String getAll(){

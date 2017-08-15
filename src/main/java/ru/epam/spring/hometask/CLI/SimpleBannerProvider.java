@@ -12,8 +12,9 @@ public class SimpleBannerProvider extends DefaultBannerProvider {
 
     public String getBanner() {
         StringBuilder strB = new StringBuilder();
-        strB.append("\\\\\\\\\\HELLO COMRAD/////")
-                .append(OsUtils.LINE_SEPARATOR);
+        strB.append("***************************").append(OsUtils.LINE_SEPARATOR);
+        strB.append("**********-Hello-**********").append(OsUtils.LINE_SEPARATOR);
+        strB.append("***************************").append(OsUtils.LINE_SEPARATOR);
         return strB.toString();
     }
 
@@ -22,10 +23,10 @@ public class SimpleBannerProvider extends DefaultBannerProvider {
     }
 
     public String getWelcomeMessage() {
-        return "Welcome to application for managing a movie theater";
+        return "Вас приветствует панель управления театром";
     }
 
     public String getProviderName() {
-        return "Dmitriy Top";
+        return "Gennadii_B";
     }
 }

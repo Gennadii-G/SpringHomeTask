@@ -10,41 +10,57 @@
  		http://www.springframework.org/schema/util
  		http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
-    <!--<bean class="ru.epam.spring.hometask.domain.MyClass" id="Testo"/>-->
+    <import resource="auditoriums.xml"/>
+    <import resource="users.xml"/>
+    <import resource="event.xml"/>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
-                <value>classpath:aud.properties</value>
+                <value>classpath:auditorium.properties</value>
+                <value>classpath:users.properties</value>
             </list>
         </property>
         <property name="ignoreResourceNotFound" value="true" />
     </bean>
 
-    <bean id="usersDAO" class="ru.epam.spring.hometask.database.UsersDAO"/>
+    <bean id="usersDAO" class="ru.epam.spring.hometask.database.UsersDAO">
+        <property name="data">
+            <list>
+                <ref bean="admin"/>
+                <ref bean="userI"/>
+                <ref bean="userII"/>
+                <ref bean="userIII"/>
+            </list>
+        </property>
+    </bean>
     <bean id="ticketsDAO" class="ru.epam.spring.hometask.database.TicketsDAO"/>
     <bean id="eventsDAO" class="ru.epam.spring.hometask.database.EventsDAO"/>
     <bean id="discountDAO" class="ru.epam.spring.hometask.database.DiscountDAO"/>
-    <bean id="auditoriumDAO" class="ru.epam.spring.hometask.database.AuditoriumDAO"/>
-    <bean id="session" class="ru.epam.spring.hometask.utils.Session"/>
+    <bean id="auditoriumDAO" class="ru.epam.spring.hometask.database.AuditoriumDAO">
+        <property name="data">
+            <set>
+                <ref bean="smallAuditorium"/>
+                <ref bean="mediumAuditorium"/>
+                <ref bean="largeAuditorium"/>
+            </set>
+        </property>
+    </bean>
+    <bean id="session" class="ru.epam.spring.hometask.util.Session"/>
 
-    <bean id="userAdapter" class="ru.epam.spring.hometask.utils.adapter.UserConsoleAdapter">
+    <bean id="userAdapter" class="ru.epam.spring.hometask.util.adapter.UserConsoleAdapter">
         <constructor-arg ref="usersDAO"/>
     </bean>
-    <bean id="bookingAdapter" class="ru.epam.spring.hometask.utils.adapter.BookingConsoleAdapter">
+    <bean id="bookingAdapter" class="ru.epam.spring.hometask.util.adapter.BookingConsoleAdapter">
         <constructor-arg ref="ticketsDAO"/>
         <constructor-arg ref="eventsDAO"/>
         <constructor-arg ref="usersDAO"/>
     </bean>
-    <bean id="eventAdapter" class="ru.epam.spring.hometask.utils.adapter.EventConsoleAdapter">
+    <bean id="eventAdapter" class="ru.epam.spring.hometask.util.adapter.EventConsoleAdapter">
         <constructor-arg ref="eventsDAO"/>
         <constructor-arg ref="auditoriumDAO"/>
     </bean>
-    <bean id="auditoriumAdapter" class="ru.epam.spring.hometask.utils.adapter.AuditoriumConsoleAdapter">
+    <bean id="auditoriumAdapter" class="ru.epam.spring.hometask.util.adapter.AuditoriumConsoleAdapter">
         <constructor-arg ref="auditoriumDAO"/>
     </bean>
-
-    <!--<bean id="user" class="ru.epam.spring.hometask.domain.User" scope="prototype"/>-->
-
-
 </beans>

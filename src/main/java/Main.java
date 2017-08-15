@@ -12,9 +12,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         System.out.println("start");
-        LocalDate ld = LocalDate.parse("2000-12-12");
-        System.out.println(ld);
-
 
         LogManager.getLogManager().reset(); // off spring-msg
         ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");

@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 import java.util.*;
 
 public class EventsDAO implements EventService {
-    private List<Event> data = new ArrayList<>();
+    private List<Event> data;
 
     @Nullable
     @Override
@@ -50,5 +50,9 @@ public class EventsDAO implements EventService {
         List<Event> allEvents = new ArrayList<>();
         allEvents.addAll(data);
         return allEvents;
+    }
+
+    public void setData(List<Event> data) {
+        this.data = data;
     }
 }

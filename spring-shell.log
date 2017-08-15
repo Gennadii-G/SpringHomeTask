@@ -49,3 +49,110 @@ registration --firstName Gena --lastName Borodin --email a@b.ru
 help
 show-all-event
 test
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-14 17:49:01
+help
+show-all-event
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-14 17:51:55
+help
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 09:50:27
+login --name asd
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 09:56:12
+get-user --email asd@asd.ads
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 09:59:08
+help
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 10:01:01
+active-user
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 10:03:28
+active-user
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 10:04:24
+test
+test
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 10:04:38
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 10:05:04
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 10:05:20
+test-do
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 10:06:19
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 10:09:04
+help
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 11:23:13
+login --email 'sobaka@mail.com'
+active-user
+help
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 11:26:09
+active-user
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 11:28:00
+show-all-users
+active-user
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 11:48:19
+login --email 'sobaka@mail.com'
+show-all-users
+logout
+show-all-users
+active-user
+show-all-users
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 11:51:10
+active-user
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 11:52:29
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 11:53:01
+active-user
+login --email a
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 11:54:09
+login --email sobaka
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 11:54:43
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 11:55:24
+active-user
+login --email a
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 11:57:19
+login --email a
+logout
+active-user
+login --email sobaka
+show-all-users
+logout
+login --email a
+logout
+login --email a
+show-all-events
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 13:53:33
+help
+login --email a
+show-all-auditoriums
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 13:56:14
+login --email a
+show-all-auditoriums
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 14:13:39
+login --email a
+show-all-auditoriums
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 14:22:35
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 14:34:20
+// [failed] login --email sobaka
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 14:37:59
+login --email sobaka
+show-all-users
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 14:40:59
+login --email a
+logout
+login --email sobaka
+show-all-users
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 14:44:50
+login --email sobaka
+show-all-users
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 14:46:41
+login --email sobaka
+show-all-users
+// Dmitriy Top 1.1.0.RELEASE log opened at 2017-08-15 14:47:46
+login --email sobaka 
+show-all-users
+// Gennadii_B 1.1.0.RELEASE log opened at 2017-08-15 15:09:02
+// Gennadii_B 1.1.0.RELEASE log opened at 2017-08-15 15:09:19
+// Gennadii_B 1.1.0.RELEASE log opened at 2017-08-15 15:09:36
+// Gennadii_B 1.1.0.RELEASE log opened at 2017-08-15 15:10:03
+// Gennadii_B 1.1.0.RELEASE log opened at 2017-08-15 15:57:26
+active-user
+// Gennadii_B 1.1.0.RELEASE log opened at 2017-08-15 15:58:19
+active-user
+// Gennadii_B 1.1.0.RELEASE log opened at 2017-08-15 15:59:33
+login --email a
+active-user
+logout
+active-user

@@ -1,4 +1,4 @@
-package ru.epam.spring.hometask.utils.adapter;
+package ru.epam.spring.hometask.util.adapter;
 
 import ru.epam.spring.hometask.abstract_layout.service.AuditoriumService;
 import ru.epam.spring.hometask.domain.Auditorium;
@@ -17,16 +17,16 @@ public class AuditoriumConsoleAdapter {
     public String getAll() {
         Set<Auditorium> audSet = (HashSet<Auditorium>) audService.getAll();
         StringBuilder strB = new StringBuilder();
-        for (Auditorium ad : audSet ){
-            strB.append(ad.toString() + "\n");
+        for (Auditorium aud : audSet ){
+            strB.append(aud.toString() + "\n");
         }
         return strB.toString();
 
     }
 
     public String getByName(String name) {
-        Auditorium ad = audService.getByName(name);
-        return (ad!=null)?"not found":ad.toString();
+        Auditorium aud = audService.getByName(name);
+        return (aud!=null)?"not found":aud.toString();
 
     }
 }

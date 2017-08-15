@@ -26,6 +26,10 @@ public class User extends DomainObject {
         return power;
     }
 
+    public void setPower(boolean power) {
+        this.power = power;
+    }
+
     public LocalDate getBirthDay() {
         return birthDay;
     }

@@ -11,6 +11,10 @@ public class AuditoriumDAO implements AuditoriumService {
 
     private static Set<Auditorium> data = new HashSet<>();
 
+    public static void setData(Set<Auditorium> data) {
+        AuditoriumDAO.data = data;
+    }
+
     @Nonnull
     @Override
     public Set<Auditorium> getAll() {

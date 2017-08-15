@@ -1,4 +1,4 @@
-package ru.epam.spring.hometask.utils.adapter;
+package ru.epam.spring.hometask.util.adapter;
 
 import ru.epam.spring.hometask.abstract_layout.service.BookingService;
 import ru.epam.spring.hometask.abstract_layout.service.EventService;
@@ -10,6 +10,7 @@ import ru.epam.spring.hometask.domain.User;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class BookingConsoleAdapter {
@@ -24,34 +25,34 @@ public class BookingConsoleAdapter {
         this.userService = userService;
     }
 
-    public String getTicketPrice(String event, String airDate, String userEmail, String seatsStr[]) {
+    public String getTicketPrice(Map<String, String> parameters) {
         double summPrice = 0;
         try {
-            int eventID = Integer.parseInt(event);
-            Event currentEvent = eventService.getById(eventID);
+            int eventId = Integer.parseInt(parameters.get("eventId"));
+            Event currentEvent = eventService.getById(eventId);
 
-            if (currentEvent == null) return "Event not found";
+            if (currentEvent == null) return "событие не найдено";
 
-            LocalDateTime airDateTime = LocalDateTime.parse(airDate, Event.FORMATTER);
-            User user = userService.getUserByEmail(userEmail);
+            LocalDateTime airDateTime = LocalDateTime.parse(parameters.get("airDate"), Event.FORMATTER);
+            User user = userService.getUserByEmail(parameters.get("userEmail"));
 
-            if (user == null) return "User not found";
+            if (user == null) return "пользователь не найден";
 
-            Set<Long> seats = convertStringToSetLong(seatsStr);
+            String[] seatsStrArr = parameters.get("seats").split(",");
+            Set<Long> seats = convertStringToSetLong(seatsStrArr);
 
-            if(currentEvent.getAuditoriums().get(airDateTime)==null)return "Event in choose air date not found";
+            if(currentEvent.getAuditoriums().get(airDateTime)==null)return "событий на данную дату не запланировано";
 
-            if(!currentEvent.getAuditoriums().get(airDateTime).getAllSeats().containsAll(seats))return "Seats not found";
+            if(!currentEvent.getAuditoriums().get(airDateTime).getAllSeats().containsAll(seats))return "нет мест";
 
             String result = String.valueOf(bookingService.getTicketsPrice(currentEvent, airDateTime, user, seats));
             return result;
-
         } catch (NumberFormatException e) {
-            return "argument 'eventID' is wrong";
+            return "параметр 'eventID' введен неверно";
         } catch (DateTimeParseException e) {
-            return "argument 'air date' is wrong";
+            return "параметр 'air date' введен неверно";
         } catch (NullPointerException e) {
-            return "argument is wrong";
+            return "параметр введен неверно";
         }
 
     }

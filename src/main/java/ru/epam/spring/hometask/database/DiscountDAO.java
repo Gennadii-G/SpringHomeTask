@@ -13,6 +13,8 @@ public class DiscountDAO implements DiscountService {
     @Override
     public byte getDiscount(@Nullable User user, @Nonnull Event event, @Nonnull LocalDateTime airDateTime, long numberOfTickets) {
         byte discount = 0;
+
+
         return 0;
     }
 }

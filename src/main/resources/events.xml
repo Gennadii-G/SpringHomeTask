@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="
+ 		http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+ 		http://www.springframework.org/schema/util
+ 		http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+    <bean id="smallAuditorium" class="ru.epam.spring.hometask.domain.Auditorium">
+        <property name="name">
+            <value type="java.lang.String">${auditorium.small.name}</value>
+        </property>
+        <property name="numberOfSeats">
+            <value type="java.lang.Long">${auditorium.small.seats}</value>
+        </property>
+        <property name="vipSeats">
+            <value type="java.lang.String[]">${auditorium.small.vipSeats}</value>
+        </property>
+    </bean>
+
+    <bean id="chParty" class="ru.epam.spring.hometask.domain.Event">
+        <property name="name">
+            <value type="java.lang.String">${0.event.name}</value>
+        </property>
+        <property name="name">
+            <value type="java.lang.String">${0.event.name}</value>
+        </property>
+    </bean>
+</beans>
