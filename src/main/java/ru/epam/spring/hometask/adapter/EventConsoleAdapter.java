@@ -1,15 +1,11 @@
-package ru.epam.spring.hometask.util.adapter;
+package ru.epam.spring.hometask.adapter;
 
 import ru.epam.spring.hometask.abstract_layout.service.AuditoriumService;
 import ru.epam.spring.hometask.abstract_layout.service.EventService;
-import ru.epam.spring.hometask.domain.Auditorium;
 import ru.epam.spring.hometask.domain.Event;
 import ru.epam.spring.hometask.domain.EventRating;
 
-import java.time.LocalDateTime;
 import java.util.Map;
-import java.util.NavigableMap;
-import java.util.TreeMap;
 
 public class EventConsoleAdapter {
 
@@ -34,7 +30,9 @@ public class EventConsoleAdapter {
     }
 
     public String getEvent(String Name){
-        return eventService.getByName(Name).toString();
+        String eventName = eventService.getByName(Name).getName();
+        if(eventName == null) return "пусто";
+        return eventName;
     }
 
     public String save(Map<String, String> parameters){
@@ -43,14 +41,10 @@ public class EventConsoleAdapter {
         event.setName(parameters.get("eventName"));
         event.setBasePrice(Double.parseDouble(parameters.get("basePrice")));
         event.setRating(EventRating.valueOf(parameters.get("rating")));
+        event.setAirDates(parameters.get("airDates").split(","));
+        event.refreshAuditoriums();
 
-        NavigableMap<LocalDateTime, Auditorium> auditoriums = new TreeMap<>();
-        String[] airDateArr = parameters.get("airDates").split(",");
-        for(String strAirDate : airDateArr){
-            LocalDateTime airDate = LocalDateTime.parse(strAirDate, Event.FORMATTER);
-            auditoriums.put(airDate, audService.getByName(parameters.get("auditorium")));
-        }
-        event.setAuditoriums(auditoriums);
+        eventService.save(event);
 
         return "событие добавлено";
     }

@@ -4,38 +4,38 @@ import ru.epam.spring.hometask.domain.User;
 
 public class Session {
 
-    private User activeUser;
+    private User currentUser;
     private User guest;
 
     public Session() {
         guest = new User();
-        guest.setFirstName("guest");
-        activeUser = guest;
+        guest.setFirstName("Guest");
+        guest.setEmail("empty@io.com");
+        currentUser = guest;
     }
 
-    public Boolean isAuth() {
-        if (activeUser.getFirstName() != "guest") return true;
-        return false;
+    public boolean isAuth() {
+        return !currentUser.getFirstName().equals("Guest");
     }
 
-    public Boolean isAdmin() {
-        if (activeUser != null && activeUser.isPower()){
-            return true;
-        }else {
-            return false;
-        }
+    public boolean isGuest(){
+        return currentUser.getFirstName().equals("Guest");
+    }
+
+    public boolean isAdmin() {
+        return currentUser != null && currentUser.isPower();
     }
 
     public boolean logout(){
-        activeUser = guest;
+        currentUser = guest;
             return true;
     }
 
-    public void setActiveUser(User activeUser){
-            this.activeUser = activeUser;
+    public void setCurrentUser(User currentUser){
+            this.currentUser = currentUser;
     }
 
-    public User getActiveUser(){
-        return activeUser;
+    public User getCurrentUser(){
+        return currentUser;
     }
 }

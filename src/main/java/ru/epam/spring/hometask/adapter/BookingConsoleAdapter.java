@@ -1,4 +1,4 @@
-package ru.epam.spring.hometask.util.adapter;
+package ru.epam.spring.hometask.adapter;
 
 import ru.epam.spring.hometask.abstract_layout.service.BookingService;
 import ru.epam.spring.hometask.abstract_layout.service.EventService;

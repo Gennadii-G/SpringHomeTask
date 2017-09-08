@@ -10,24 +10,58 @@
  		http://www.springframework.org/schema/util
  		http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
-    <bean id="smallAuditorium" class="ru.epam.spring.hometask.domain.Auditorium">
+
+    <bean id="childParty" class="ru.epam.spring.hometask.domain.Event" lazy-init="true" init-method="init">
         <property name="name">
-            <value type="java.lang.String">${auditorium.small.name}</value>
+            <value type="java.lang.String">${0.event.name}</value>
         </property>
-        <property name="numberOfSeats">
-            <value type="java.lang.Long">${auditorium.small.seats}</value>
+        <property name="airDates">
+            <value type="java.lang.String[]">${0.event.airDates}</value>
         </property>
-        <property name="vipSeats">
-            <value type="java.lang.String[]">${auditorium.small.vipSeats}</value>
+        <property name="basePrice">
+            <value type="java.lang.Double">${0.event.basePrice}</value>
+        </property>
+        <property name="rating">
+            <value type="ru.epam.spring.hometask.domain.EventRating">${0.event.rating}</value>
+        </property>
+        <property name="auditorium">
+            <ref bean="${0.event.auditorium}"/>
         </property>
     </bean>
 
-    <bean id="chParty" class="ru.epam.spring.hometask.domain.Event">
+    <bean id="birthDay" class="ru.epam.spring.hometask.domain.Event" lazy-init="true" init-method="init">
         <property name="name">
-            <value type="java.lang.String">${0.event.name}</value>
+            <value type="java.lang.String">${1.event.name}</value>
         </property>
+        <property name="airDates">
+            <value type="java.lang.String[]">${1.event.airDates}</value>
+        </property>
+        <property name="basePrice">
+            <value type="java.lang.Double">${1.event.basePrice}</value>
+        </property>
+        <property name="rating">
+            <value type="ru.epam.spring.hometask.domain.EventRating">${1.event.rating}</value>
+        </property>
+        <property name="auditorium">
+            <ref bean="${1.event.auditorium}"/>
+        </property>
+    </bean>
+
+    <bean id="concert" class="ru.epam.spring.hometask.domain.Event" lazy-init="true" init-method="init">
         <property name="name">
-            <value type="java.lang.String">${0.event.name}</value>
+            <value type="java.lang.String">${2.event.name}</value>
+        </property>
+        <property name="airDates">
+            <value type="java.lang.String[]">${2.event.airDates}</value>
+        </property>
+        <property name="basePrice">
+            <value type="java.lang.Double">${2.event.basePrice}</value>
+        </property>
+        <property name="rating">
+            <value type="ru.epam.spring.hometask.domain.EventRating">${2.event.rating}</value>
+        </property>
+        <property name="auditorium">
+            <ref bean="${2.event.auditorium}"/>
         </property>
     </bean>
 </beans>

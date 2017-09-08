@@ -12,9 +12,13 @@ public class SimpleBannerProvider extends DefaultBannerProvider {
 
     public String getBanner() {
         StringBuilder strB = new StringBuilder();
-        strB.append("***************************").append(OsUtils.LINE_SEPARATOR);
-        strB.append("**********-Hello-**********").append(OsUtils.LINE_SEPARATOR);
-        strB.append("***************************").append(OsUtils.LINE_SEPARATOR);
+        strB.append("   __________________________         ").append(OsUtils.LINE_SEPARATOR);
+        strB.append("  |                          |         ").append(OsUtils.LINE_SEPARATOR);
+        strB.append("  |         Welcome          |         ").append(OsUtils.LINE_SEPARATOR);
+        strB.append("  |__________________________|         ").append(OsUtils.LINE_SEPARATOR);
+
+
+
         return strB.toString();
     }
 
@@ -23,7 +27,7 @@ public class SimpleBannerProvider extends DefaultBannerProvider {
     }
 
     public String getWelcomeMessage() {
-        return "Вас приветствует панель управления театром";
+        return "Добро пожаловать в управление театром";
     }
 
     public String getProviderName() {

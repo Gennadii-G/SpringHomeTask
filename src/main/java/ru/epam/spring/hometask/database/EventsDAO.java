@@ -9,6 +9,7 @@ import java.util.*;
 
 public class EventsDAO implements EventService {
     private List<Event> data;
+    private static int tempId = 0;
 
     @Nullable
     @Override
@@ -22,6 +23,9 @@ public class EventsDAO implements EventService {
 
     @Override
     public boolean save(@Nonnull Event event) {
+        if(data == null)data = new ArrayList<>();
+        event.setId(data.size()+1);
+//        event.assignAuditorium();
         return data.add(event);
     }
 
@@ -32,16 +36,13 @@ public class EventsDAO implements EventService {
 
     @Override
     public Event remove(@Nonnull int id) {
-        return data.remove(id);
+        return data.remove(id-1);
     }
 
     @Override
     public Event getById(@Nonnull int id) {
-        for(Event event : data){
-            if(event.getId() == id)
-                return event;
-        }
-        return null;
+        Event e = data.get(id-1);
+        return e;
     }
 
     @Nonnull
@@ -54,5 +55,13 @@ public class EventsDAO implements EventService {
 
     public void setData(List<Event> data) {
         this.data = data;
+    }
+
+    public static int getTempId() {
+        return tempId;
+    }
+
+    public static void setTempId(int tempId) {
+        EventsDAO.tempId = tempId;
     }
 }

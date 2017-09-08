@@ -9,14 +9,15 @@ import java.util.Objects;
 public class Ticket extends DomainObject implements Comparable<Ticket> {
 
     private User user;
-
     private Event event;
-
     private LocalDateTime dateTime;
-
     private long seat;
-
+    private boolean isVIP;
     private boolean isBuy;
+
+    public Ticket(long seat) {
+        this.seat = seat;
+    }
 
     public Ticket(User user, Event event, LocalDateTime dateTime, long seat) {
         this.user = user;
@@ -47,6 +48,14 @@ public class Ticket extends DomainObject implements Comparable<Ticket> {
 
     public void setBuy(boolean buy) {
         isBuy = buy;
+    }
+
+    public boolean isVIP() {
+        return isVIP;
+    }
+
+    public void setVIP(boolean VIP) {
+        isVIP = VIP;
     }
 
     @Override

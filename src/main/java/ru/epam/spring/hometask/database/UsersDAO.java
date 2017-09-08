@@ -11,8 +11,8 @@ import java.util.List;
 
 public class UsersDAO implements UserService {
 
-    private static List<User> data;
-    private static int id;
+    private  List<User> data;
+    private  int id;
 
     @Nullable
     @Override
@@ -47,13 +47,13 @@ public class UsersDAO implements UserService {
 
     @Nonnull
     @Override
-    public Collection<User> getAll() {
+    public List<User> getAll() {
         ArrayList<User> allUsers = new ArrayList<>();
         allUsers.addAll(data);
         return allUsers;
     }
 
-    public static void setData(List<User> data) {
-        UsersDAO.data = data;
+    public  void setData(List<User> data) {
+        this.data = data;
     }
 }

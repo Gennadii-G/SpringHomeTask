@@ -9,9 +9,9 @@ import java.util.*;
 
 public class AuditoriumDAO implements AuditoriumService {
 
-    private static Set<Auditorium> data = new HashSet<>();
+    private static Set<Auditorium> data;
 
-    public static void setData(Set<Auditorium> data) {
+    public void setData(Set<Auditorium> data) {
         AuditoriumDAO.data = data;
     }
 
@@ -30,5 +30,6 @@ public class AuditoriumDAO implements AuditoriumService {
             if (auditorium.getName().equals(name)) return auditorium;
         }
         return null;
+
     }
 }

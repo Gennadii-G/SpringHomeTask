@@ -14,13 +14,16 @@ import java.util.Set;
 public class TicketsDAO implements BookingService {
 
     private DiscountService ds;
-    private ArrayList<Ticket> BD = new ArrayList<>();
+    private ArrayList<Ticket> data = new ArrayList<>();
+
+
 
     public TicketsDAO(DiscountService ds) {
         this.ds = ds;
     }
 
-    @Override
+
+        @Override
     public double getTicketsPrice(@Nonnull Event event, @Nonnull LocalDateTime dateTime, @Nullable User user, @Nonnull Set<Long> seats) {
         double summPrice = 0;
         Long numberOfTickets = (long) seats.size();
@@ -44,7 +47,7 @@ public class TicketsDAO implements BookingService {
 
     @Override
     public void bookTickets(@Nonnull Set<Ticket> tickets) {
-        BD.addAll(tickets);
+        data.addAll(tickets);
 
     }
 
@@ -52,7 +55,7 @@ public class TicketsDAO implements BookingService {
     @Override
     public Set<Ticket> getPurchasedTicketsForEvent(@Nonnull Event event, @Nonnull LocalDateTime dateTime) {
         HashSet<Ticket> tickets = new HashSet<>();
-        for (Ticket ticket : BD){
+        for (Ticket ticket : data){
             if (ticket.getDateTime().equals(dateTime) && ticket.getEvent().equals(event)) tickets.add(ticket);
         }
         return tickets;

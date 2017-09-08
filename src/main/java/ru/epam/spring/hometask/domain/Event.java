@@ -1,5 +1,7 @@
 package ru.epam.spring.hometask.domain;
 
+import ru.epam.spring.hometask.database.EventsDAO;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -18,13 +20,31 @@ public class Event extends DomainObject {
     private NavigableSet<LocalDateTime> airDates = new TreeSet<>();
     private double basePrice;
     private EventRating rating;
+    private Auditorium auditorium;
     private NavigableMap<LocalDateTime, Auditorium> auditoriums = new TreeMap<>();
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+    public void init() {
+        this.setId(EventsDAO.getTempId()+1);
+        EventsDAO.setTempId(this.getId());
+        refreshAuditoriums();
+    }
+
+    public void refreshAuditoriums(){
+        auditoriums.clear();
+        for(LocalDateTime dt : airDates){
+            assignAuditorium(dt, auditorium);
+        }
+    }
+
+    public boolean assignDateTimeAuditorium(LocalDateTime dateTime) {
+        return airDates.add(dateTime);
+    }
 
     /**
      * Checks if event is aired on particular <code>dateTime</code> and assigns
      * auditorium to it.
-     * 
+     *
      * @param dateTime
      *            Date and time of aired event for which to assign
      * @param auditorium
@@ -43,7 +63,7 @@ public class Event extends DomainObject {
 
     /**
      * Removes auditorium assignment from event
-     * 
+     *
      * @param dateTime
      *            Date and time to remove auditorium for
      * @return <code>true</code> if successful, <code>false</code> if not
@@ -62,20 +82,6 @@ public class Event extends DomainObject {
      *         there
      */
     public boolean addAirDateTime(LocalDateTime dateTime) {
-        return airDates.add(dateTime);
-    }
-
-    /**
-     * Adding date and time of event air and assigning auditorium to that
-     * 
-     * @param dateTime
-     *            Date and time to add
-     * @param auditorium
-     *            Auditorium to add if success in date time add
-     * @return <code>true</code> if successful, <code>false</code> if already
-     *         there
-     */
-    public boolean addAirDateTime(LocalDateTime dateTime, Auditorium auditorium) {
         boolean result = airDates.add(dateTime);
         if (result) {
             auditoriums.put(dateTime, auditorium);
@@ -84,9 +90,23 @@ public class Event extends DomainObject {
     }
 
     /**
+     * Adding date and time of event air and assigning auditorium to that
+     *
+     * @param dateTime
+     *            Date and time to add
+     * @param auditorium
+     *            Auditorium to add if success in date time add
+     * @return <code>true</code> if successful, <code>false</code> if already
+     *         there
+     */
+    public boolean addAirDateTime(LocalDateTime dateTime, Auditorium auditorium) {
+        return airDates.add(dateTime);
+    }
+
+    /**
      * Removes the date and time of event air. If auditorium was assigned to
      * that date and time - the assignment is also removed
-     * 
+     *
      * @param dateTime
      *            Date and time to remove
      * @return <code>true</code> if successful, <code>false</code> if not there
@@ -148,7 +168,11 @@ public class Event extends DomainObject {
         return airDates;
     }
 
-    public void setAirDates(NavigableSet<LocalDateTime> airDates) {
+    public void setAirDates(String[] strDates) {
+        NavigableSet<LocalDateTime> airDates = new TreeSet<>();
+        for(String strDate : strDates){
+           airDates.add(LocalDateTime.parse(strDate, FORMATTER));
+        }
         this.airDates = airDates;
     }
 
@@ -168,17 +192,33 @@ public class Event extends DomainObject {
         this.rating = rating;
     }
 
+    public Auditorium getAuditorium() {
+        return auditorium;
+    }
+
+    public void setAuditorium(Auditorium auditorium) {
+        this.auditorium = auditorium;
+    }
+
+    @Override
+    public String toString() {
+        return "[ " + this.getId() + " ] Event:" +
+                "name='" + name + '\'' +
+                ", airDates=" + airDates +
+                ", basePrice=" + basePrice;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+
     public NavigableMap<LocalDateTime, Auditorium> getAuditoriums() {
         return auditoriums;
     }
 
     public void setAuditoriums(NavigableMap<LocalDateTime, Auditorium> auditoriums) {
         this.auditoriums = auditoriums;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name);
     }
 
     @Override

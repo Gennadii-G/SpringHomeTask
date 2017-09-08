@@ -8,10 +8,10 @@ import org.springframework.shell.core.annotation.CliOption;
 import org.springframework.stereotype.Component;
 import ru.epam.spring.hometask.domain.User;
 import ru.epam.spring.hometask.util.Session;
-import ru.epam.spring.hometask.util.adapter.AuditoriumConsoleAdapter;
-import ru.epam.spring.hometask.util.adapter.BookingConsoleAdapter;
-import ru.epam.spring.hometask.util.adapter.EventConsoleAdapter;
-import ru.epam.spring.hometask.util.adapter.UserConsoleAdapter;
+import ru.epam.spring.hometask.adapter.AuditoriumConsoleAdapter;
+import ru.epam.spring.hometask.adapter.BookingConsoleAdapter;
+import ru.epam.spring.hometask.adapter.EventConsoleAdapter;
+import ru.epam.spring.hometask.adapter.UserConsoleAdapter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,45 +33,41 @@ public class Commands implements CommandMarker {
     }
 
     @CliAvailabilityIndicator({"show-event", "show-all-events", "show-all-auditoriums", "book-ticket", "get-price", "show-auditorium"})
-    public boolean isAuthUser(){
-        return session.isAuth();
-    }
+    public boolean isAuthUser(){ return session.isGuest() || session.isAuth();}
 
     @CliAvailabilityIndicator({"user-delete", "get-user", "get-user-by-email", "show-all-users", "add-event", "delete-event", "get-purchased-tickets"})
-    public boolean isAdmin() {
-        return (session.getActiveUser() != null && session.getActiveUser().isPower());
-    }
+    public boolean isAdmin() { return (session.getCurrentUser().isPower());}
 
     @CliCommand(value = "test", help = "something will help you")
     public String doTest() {
         return "[ TEST - OK ]";
     }
 
-    @CliCommand(value = "active-user")
+    @CliCommand(value = "current-user", help = "show current user")
     public String getActiveUser(){
-        User user = session.getActiveUser();
+        User user = session.getCurrentUser();
         if(user == null) return "нет активного пользователя";
         else return user.getId() + ". " + user.getFirstName();
     }
 
-    @CliCommand(value = "login")
+    @CliCommand(value = "login", help = "email")
     public String login(@CliOption(key = "email", mandatory = true) String email){
         User user = userConsoleAdapter.loginByEmail(email);
         if(user == null)return "пользователь с таким ящиком не найден";
         else{
-            session.setActiveUser(user);
+            session.setCurrentUser(user);
             return "пользователь " + user.getFirstName() + " вошел";
         }
     }
 
-    @CliCommand(value = "logout")
+    @CliCommand(value = "logout", help = "---")
     public String logout(){
-        String usName = session.getActiveUser().getFirstName();
+        String usName = session.getCurrentUser().getFirstName();
         session.logout();
         return "пользователь " + usName + " вышел.";
     }
 
-    @CliCommand(value = "registration")
+    @CliCommand(value = "registration", help = "firstName, lastName, birthDate(2000-10-10), email")
     public String userRegistration(
             @CliOption(key = "firstName", mandatory = true) String firstName,
             @CliOption(key = "lastName", mandatory = true) String lastName,
@@ -87,25 +83,25 @@ public class Commands implements CommandMarker {
         return userConsoleAdapter.userRegistration(parameters);
     }
 
-    @CliCommand(value = "user-delete")
+    @CliCommand(value = "user-delete", help = "id")
     public String userDelete(
             @CliOption(key = "id", mandatory = true) String id) {
         return userConsoleAdapter.delUser(Integer.parseInt(id));
     }
 
-    @CliCommand(value = "get-user")
+    @CliCommand(value = "get-user", help = "id")
     public String getUserById(
             @CliOption(key = "id", mandatory = true) String id) {
         return userConsoleAdapter.getUserById(Integer.parseInt(id));
     }
 
-    @CliCommand(value = "get-user-by-email")
+    @CliCommand(value = "get-user-by-email", help = "email")
     public String getUserByEmail(
             @CliOption(key = "email", mandatory = true) String email) {
         return userConsoleAdapter.getUserByEmail(email);
     }
 
-    @CliCommand(value = {"show-all-users"})
+    @CliCommand(value = {"show-all-users"}, help = "eventName")
     public String getAllUser() {
         return userConsoleAdapter.getAll();
     }
@@ -115,7 +111,7 @@ public class Commands implements CommandMarker {
         return eventConsoleAdapter.getEvent(eventName);
     }
 
-    @CliCommand(value={"add-event"})
+    @CliCommand(value={"add-event"}, help = "eventName, airDates(2000-10-10 12:00,2000-10-10 12:30), basePrice, rating, auditorium")
     public String saveEvent(
             @CliOption(key = "eventName", mandatory = true) String eventName,
             @CliOption(key = "airDates", mandatory = true) String airDates,
@@ -131,56 +127,53 @@ public class Commands implements CommandMarker {
             put("airDates", airDates);
         }};
         return eventConsoleAdapter.save(parameters);
-//        return eventConsoleAdapter.save(eventName, airDatesArray, basePrice, rating, auditoriums);
     }
 
-    @CliCommand(value = {"show-all-events"})
+    @CliCommand(value = {"show-all-events"}, help = "---")
     public String getAllEvent(){
         return eventConsoleAdapter.getAllEvents();
     }
 
-    @CliCommand(value = {"delete-event"})
+    @CliCommand(value = {"delete-event"}, help = "id")
     public String removeEvent( @CliOption(key = "id", mandatory = true) String id){
         return eventConsoleAdapter.remove(id);
     }
 
-    @CliCommand(value = {"show-all-auditoriums"})
+    @CliCommand(value = {"show-all-auditoriums"}, help = "---")
     public String getAllAuditoriums(){
         return auditorimConsoleAdapter.getAll();
     }
 
-    @CliCommand(value = {"show-auditorium"})
+    @CliCommand(value = {"show-auditorium"}, help = "auditoriumName")
     public String getAudByName(@CliOption(key = "auditoriumName", mandatory = true) String audName){
         return auditorimConsoleAdapter.getByName(audName);
     }
 
-    @CliCommand(value = {"get-price"})
+    @CliCommand(value = {"get-price"}, help = "eventId, airDate, seats")
     public String getTicketsPrice(
             @CliOption(key = "eventId", mandatory = true) String event,
             @CliOption(key = "airDate", mandatory = true) String airDate,
-            @CliOption(key = "userEmail", mandatory = true) String userEmail,
             @CliOption(key = "seats", mandatory = true) String seats) {
 
         parameters = new HashMap<String, String>(){{
             put("eventId", event);
             put("airDate", airDate);
-            put("userEmail", userEmail);
+            put("userEmail", session.getCurrentUser().getEmail());
             put("seats", seats);
         }};
         return bookingConsoleAdapter.getTicketPrice(parameters);
     }
 
-    @CliCommand(value = {"book-ticket"})
+    @CliCommand(value = {"book-ticket"}, help = "eventID, airDate, seats")
     public String bookTicket(
             @CliOption(key = "eventID", mandatory = true) String event,
             @CliOption(key = "airDate", mandatory = true) String airDate,
-            @CliOption(key = "userEmail", mandatory = true) String userEmail,
             @CliOption(key = "seats", mandatory = true) String seats) {
 
-        return bookingConsoleAdapter.bookTicket(event,airDate,userEmail,seats.split(","));
+        return bookingConsoleAdapter.bookTicket(event,airDate,session.getCurrentUser().getEmail(),seats.split(","));
     }
 
-    @CliCommand(value = {"get-purchased-tickets"})
+    @CliCommand(value = {"get-purchased-tickets"}, help = "eventId, airDate")
     public String getPurchasedTicketsForEvent(
             @CliOption(key = "eventId", mandatory = true) String event,
             @CliOption(key = "airDate", mandatory = true) String airDate) {

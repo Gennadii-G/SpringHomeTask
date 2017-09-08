@@ -20,9 +20,9 @@
         <property name="lastName">
             <value type="java.lang.String">${0.user.lastName}</value>
         </property>
-        <!--<property name="birthDate">-->
-            <!--<value type="java.time.LocalDate">${0.user.birthDate}</value>-->
-        <!--</property>-->
+        <property name="birthDay">
+            <value type="java.lang.String">${0.user.birthDate}</value>
+        </property>
         <property name="email">
             <value type="java.lang.String">${0.user.email}</value>
         </property>
@@ -41,9 +41,9 @@
         <property name="lastName">
             <value type="java.lang.String">${1.user.lastName}</value>
         </property>
-        <!--<property name="birthDate">-->
-        <!--<value type="java.time.LocalDate">${1.user.birthDate}</value>-->
-        <!--</property>-->
+        <property name="birthDay">
+        <value type="java.lang.String">${1.user.birthDate}</value>
+        </property>
         <property name="email">
             <value type="java.lang.String">${1.user.email}</value>
         </property>
@@ -62,9 +62,9 @@
         <property name="lastName">
             <value type="java.lang.String">${2.user.lastName}</value>
         </property>
-        <!--<property name="birthDate">-->
-        <!--<value type="java.time.LocalDate">${2.user.birthDate}</value>-->
-        <!--</property>-->
+        <property name="birthDay">
+        <value type="java.lang.String">${2.user.birthDate}</value>
+        </property>
         <property name="email">
             <value type="java.lang.String">${2.user.email}</value>
         </property>
@@ -83,9 +83,9 @@
         <property name="lastName">
             <value type="java.lang.String">${3.user.lastName}</value>
         </property>
-        <!--<property name="birthDate">-->
-        <!--<value type="java.time.LocalDate">${3.user.birthDate}</value>-->
-        <!--</property>-->
+        <property name="birthDay">
+        <value type="java.lang.String">${3.user.birthDate}</value>
+        </property>
         <property name="email">
             <value type="java.lang.String">${3.user.email}</value>
         </property>
@@ -93,6 +93,4 @@
             <value type="java.lang.Boolean">${3.user.power}</value>
         </property>
     </bean>
-
-
 </beans>

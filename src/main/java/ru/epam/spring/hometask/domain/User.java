@@ -34,8 +34,8 @@ public class User extends DomainObject {
         return birthDay;
     }
 
-    public void setBirthDay(LocalDate birthDay) {
-        this.birthDay = birthDay;
+    public void setBirthDay(String strBDay) {
+        this.birthDay = LocalDate.parse(strBDay);
     }
 
     public String getFirstName() {
